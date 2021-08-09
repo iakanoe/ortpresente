@@ -6,7 +6,7 @@ const username = process.env.ORT_USERNAME;
 const password = process.env.ORT_PASSWORD;
 
 const materias = {
-    nt1: '52980'
+    nt2: '52980'
 };
 
 async function darpresente(codmateria) {
