@@ -6,7 +6,8 @@ const username = process.env.ORT_USERNAME;
 const password = process.env.ORT_PASSWORD;
 
 const materias = {
-    nt2: '52980'
+    nt2: '52980',
+    tp2: '52334'
 };
 
 async function darpresente(codmateria) {
@@ -16,15 +17,18 @@ async function darpresente(codmateria) {
 
     let driver = await new Builder().forBrowser('chrome').build();
     try {
-        // Navigate to Url
         await driver.get('https://aulavirtual.instituto.ort.edu.ar/login/index.php');
 
-        // Enter text "cheese" and perform keyboard action "Enter"
         await driver.findElement(By.id('username')).sendKeys(username);
         await driver.findElement(By.id('password')).sendKeys(password);
         await driver.findElement(By.id("loginbtn")).click();
 
         await driver.get(`https://aulavirtual.instituto.ort.edu.ar/mod/attendance/view.php?id=${idmateria}`)
+
+        await driver.findElement(By.linkText('Enviar asistencia')).click();
+        await driver.findElement(By.xpath('//span[@class="statusdesc" and contains(.,"Present")]')).click();
+        await driver.findElement(By.name('submitbutton')).click();
+        await driver.sleep(1000);
 
         console.log('Listo che, nnv');
     } finally {
