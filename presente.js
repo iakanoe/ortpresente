@@ -7,7 +7,10 @@ const password = process.env.ORT_PASSWORD;
 
 const materias = {
     nt2: '52980',
-    tp2: '52334'
+    tp2: '52334',
+    pr2: '53503',
+    ams: '52095',
+    bd2: '52224',
 };
 
 async function darpresente(codmateria) {
